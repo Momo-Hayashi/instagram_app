@@ -7,31 +7,32 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+
   def confirm
-    # 編集必要あり！current_user
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     render :new if @post.invalid?
   end
+
   def create
-    # 編集必要あり！current_user
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if params[:back]
       render :new
     else
       if @post.save
-        redirect_to posts_path, notice: "Post successfully posted!"
+        redirect_to posts_path, notice: "Successfully posted!"
       else
         render :new
       end
     end
   end
+
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: "Post successfully deleted!"
+    redirect_to posts_path, notice: "Successfully deleted!"
   end
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "Post successfully updated!"
+      redirect_to posts_path, notice: "Successfully updated!"
     else
       render :edit
     end

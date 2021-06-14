@@ -7,7 +7,7 @@
 </ul>
 <% @posts.each do |post|%>
   <ul>
-    <li><%= post.user %></li>
+    <li><%= post.user.name %></li>
     <li><%= image_tag post.image.url %></li>
     <li><%= post.content %></li>
     <li><%= link_to 'detail', post_path(post.id) %></li>
