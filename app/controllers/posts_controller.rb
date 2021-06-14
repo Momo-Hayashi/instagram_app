@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_posts, only:[:show, :edit, :destroy, :update]
+  skip_before_action :login_required, only: [:index, :show]
   def index
     @posts = Post.all.order(created_at: :desc)
   end
