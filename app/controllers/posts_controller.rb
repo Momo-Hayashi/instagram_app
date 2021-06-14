@@ -7,12 +7,12 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   def confirm
-    # 編集必要あり！
+    # 編集必要あり！current_user
     @post = Post.new(post_params)
     render :new if @post.invalid?
   end
   def create
-    # 編集必要あり！
+    # 編集必要あり！current_user
     @post = Post.new(post_params)
     if params[:back]
       render :new
