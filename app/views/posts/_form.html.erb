@@ -1,7 +1,7 @@
 <%= form_with(model: @post, local: true, url: new_or_edit) do |form| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @posy.error.count %>件のエラーがあります。</h2>
+      <h2><%= @post.errors.count %>件のエラーがあります。</h2>
       <ul>
         <% @post.errors.full_messages.each do |msg|%>
         <li><%= msg =%></li>
@@ -11,12 +11,12 @@
   <% end %>
   <div class="posting">
     <%= image_tag @post.image.url if @post.image && @post.image.url %>
-    <%= form.label :Image %>
-    <%= form.file_field :image %>
+    <%= form.label :Image %><br>
+    <%= form.file_field :image %><br>
     <%= form.hidden_field :image_cache %>
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.label :content %><br>
+    <%= form.text_field :content %><br>
   </div>
-  <%= form.submit class: "btn btn-warning" %>
+  <%= form.submit class: "btn btn-warning" %><br>
   <%= link_to "Back to Home", posts_path, class: "btn btn-info" %>
 <% end %>
