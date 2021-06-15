@@ -1,9 +1,9 @@
 <h2>Would you like to post with the following contents?</h2>
-<%= form_with(model: @post, local: true, url: posts_path) do |form| %>
-  <% form.hidden_field :image_cache %>
-  <% form.hidden_field :content %>
-  <p>Image：<%= image_tag @post.image.url if @post.image && @post.image.url %></p>
+<%= form_with(model: @post, url: posts_path, local: true) do |f| %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.hidden_field :content %>
+  <p>Image：<%= image_tag(@post.image.url) if @post.image && @post.image.url %></p>
   <p>Content：<%= @post.content%></p>
-  <%= form.submit "Post!" %>
-  <%= form.submit "Back", name:'back' %>
+  <%= f.submit "Post!" %>
+  <%= f.submit "Back", name:'back' %>
 <% end%>

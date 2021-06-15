@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
   def destroy
     session.delete(:user_id)
-    flash[:notice] = 'Successfully loged out! We are waiting for you to come back~!!'
+    flash[:notice] = "Loged out! See you soon~~!"
     redirect_to new_session_path
   end
 end

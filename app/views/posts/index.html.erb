@@ -12,6 +12,6 @@
     <li><%= post.content %></li>
     <li><%= link_to 'detail', post_path(post.id) %></li>
     <li><%= link_to 'edit', edit_post_path(post.id) %></li>
-    <li><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm:'Are you sure you want to like to delete the post?'} %></li>
+    <li><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm:'Are you sure you would like to delete the post?'} %></li>
   </ul>
 <% end %>

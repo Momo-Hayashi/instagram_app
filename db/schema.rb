@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2021_06_14_064443) do
+ActiveRecord::Schema.define(version: 2021_06_15_022051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_064443) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

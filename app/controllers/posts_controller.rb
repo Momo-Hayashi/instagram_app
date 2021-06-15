@@ -5,9 +5,12 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
   end
   def new
-    @post = Post.new
+    if params[:back]
+      @post = Post.new(post_params)
+    else
+      @post = Post.new
+    end
   end
-
   def confirm
     @post = current_user.posts.build(post_params)
     render :new if @post.invalid?
@@ -19,7 +22,7 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-        redirect_to posts_path, notice: "Successfully posted!"
+        redirect_to posts_path, notice: 'Successfully posted!'
       else
         render :new
       end
@@ -43,6 +46,6 @@ class PostsController < ApplicationController
   params.require(:post).permit(:content, :image, :image_cache)
   end
   def set_posts
-    @post = Post.find(params[:id])
+  @post = Post.find(params[:id])
   end
 end
