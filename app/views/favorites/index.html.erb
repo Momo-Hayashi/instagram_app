@@ -1,0 +1,9 @@
+<h1><%= current_user.name %>'s favorite posts!!</h1>
+<% @favorites.each do |f|%>
+  <p>USER：<%= f.post.user.name %></p>
+  <p>Image：<%= image_tag f.post.image.url %></p>
+  <p>Content：<%= f.post.content %></p>
+  <p>Posted：<%= f.post.created_at %></p>
+<% end %>
+<%= link_to 'Create New Post', new_post_path, class: "btn btn-warning" %>
+<%= link_to 'Back to Home', posts_path, class: "btn btn-info" %>
