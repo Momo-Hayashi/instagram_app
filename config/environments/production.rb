@@ -22,7 +22,7 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'evening-dusk-61110.herokuapp.com' }
+  config.posting_mailer.default_url_options = { host: 'evening-dusk-61110.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
