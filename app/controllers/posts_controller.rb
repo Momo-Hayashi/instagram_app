@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-        PostingMailer.posting_mail(@posting).deliver
+        PostingMailer.posting_mail(@post).deliver
         redirect_to posts_path, notice: 'Successfully posted!'
       else
         render :new
