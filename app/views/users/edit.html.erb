@@ -15,7 +15,7 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
   <%= f.label :Image %>
-  <%= f.file_field :image %>
+  <%= f.file_field :avater %>
   <%= image_tag @user.avatar.url if @user.avatar && @user.avatar.url %><br>
   <%= f.hidden_field :avatar_cache %>
   <%= f.submit 'Update My Account' %>

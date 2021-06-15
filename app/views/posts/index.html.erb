@@ -1,17 +1,20 @@
 <h1>HOME</h1>
 <%= link_to 'Create New Post', new_post_path, class: "btn btn-warning" %>
-<ul>
-  <li>User</li>
-  <li>Image</li>
-  <li>Content</li>
-</ul>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Image</th>
+    <th>Content</th>
+  </tr>
+
 <% @posts.each do |post|%>
-  <ul>
-    <li><%= post.user.name %></li>
-    <li><%= image_tag post.image.url %></li>
-    <li><%= post.content %></li>
-    <li><%= link_to 'detail', post_path(post.id) %></li>
-    <li><%= link_to 'edit', edit_post_path(post.id) %></li>
-    <li><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm:'Are you sure you would like to delete the post?'} %></li>
-  </ul>
+  <tr>
+    <td><%= post.user.name %></td>
+    <td><%= image_tag post.image.url %></td>
+    <td><%= post.content %></td>
+    <td><%= link_to 'detail', post_path(post.id) %></td>
+    <td><%= link_to 'edit', edit_post_path(post.id) %></td>
+    <td><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm:'Are you sure you would like to delete the post?'} %></td>
+  </tr>
 <% end %>
+</table>

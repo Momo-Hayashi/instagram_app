@@ -29,6 +29,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @favorite = current_user.favorites.find_by(post_id: @post.id)
+  end
+
   def destroy
     @post.destroy
     redirect_to posts_path, notice: "Successfully deleted!"
