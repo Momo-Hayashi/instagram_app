@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_users, only: [:show, :edit, :update]
+  before_action :set_users, :own_user, only: [:show, :edit, :update]
   skip_before_action :login_required, only: [:new, :create]
   def new
     @user = User.new
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to posts_path, notice: "Welcome to Insta, #{@user.name}!"
+      redirect_to user_path(@user.id), notice: "Welcome to Insta, #{@user.name}!"
     else
       render :new
     end
@@ -27,5 +27,10 @@ class UsersController < ApplicationController
   end
   def set_users
   @user = User.find(params[:id])
+  end
+  def own_user
+  if @user.id != current_user.id
+  redirect_to user_path(current_user.id)
+  end
   end
 end

@@ -1,15 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_posts, only:[:show, :edit, :destroy, :update]
   skip_before_action :login_required, only: [:index, :show]
+
   def index
     @posts = Post.all.order(created_at: :desc)
   end
   def new
-    if params[:back]
-      @post = Post.new(post_params)
-    else
+    # if params[:back]
+    #   @post = Post.new(post_params)
+    # else
       @post = Post.new
-    end
+    # end
   end
   def confirm
     @post = current_user.posts.build(post_params)
@@ -28,11 +29,16 @@ class PostsController < ApplicationController
       end
     end
   end
-
   def show
     @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
-
+  def edit
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to posts_path
+    end
+  end
   def destroy
     @post.destroy
     redirect_to posts_path, notice: "Successfully deleted!"
@@ -44,7 +50,6 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-
   private
   def post_params
   params.require(:post).permit(:content, :image, :image_cache)
