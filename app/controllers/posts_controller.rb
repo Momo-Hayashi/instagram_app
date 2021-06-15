@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-        ConfirmationMailer.confirmation_mail(@confirmation).deliver
+        ActionMailer.confirmation_mail(@confirmation).deliver
         redirect_to posts_path, notice: 'Successfully posted!'
       else
         render :new
