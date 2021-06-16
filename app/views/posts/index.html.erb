@@ -1,20 +1,26 @@
 <h1>HOME</h1>
-<div class="row">
+<div class = "row" >
   <%= link_to 'Create New Post', new_post_path, class: "btn btn-warning" %>
   <%= link_to 'See your favorites', favorites_path, class: "btn btn-success" %>
 </div>
-<article class="row">
+<article class = "row" >
   <% @posts.each do |post|%>
-    <div class="index_post col-sm-6 col-md-3">
-      <ul class = "row">
+    <div class="index_post col-sm-4 col-md-3">
+      <ul>
           <li class = "content"><%= image_tag post.image.url %></li>
           <li class = "content"><%= post.user.name %></li>
-          <li class = "content"><%= post.content %></li>
-          <li class = "content"><%= link_to 'detail', post_path(post.id) %></li>
-          <% if current_user == post.user %>
-            <li class = "content"><%= link_to 'edit', edit_post_path(post.id) %></li>
-            <li class = "content"><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm:'Are you sure you would like to delete the post?'} %></li>
-          <% end %>
+          <li class = "content text_length"><%= post.content %></li>
+          <li>
+            <table class = "change_post" >
+              <tr>
+                <td><%= link_to 'See more', post_path(post.id), class: "btn btn-outline-primary" %></td>
+                <% if current_user == post.user %>
+                  <td><%= link_to 'edit', edit_post_path(post.id), class: "btn btn-outline-success" %></td>
+                  <td><%= link_to 'delete', post_path(post.id), method: :delete, data:{ confirm:'Are you sure you would like to delete the post?'} %></td>
+                <% end %>
+              </tr>
+            </table>
+          </li>
         </ul>
       </div>
     <% end %>
