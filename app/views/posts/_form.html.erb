@@ -9,14 +9,12 @@
       </ul>
     </div>
   <% end %>
-  <div class="posting">
-    <%= form.label :Image %><br>
-    <%= form.file_field :image %><br>
-    <%= image_tag @post.image.url if @post.image && @post.image.url %><br>
-    <%= form.hidden_field :image_cache %>
-    <%= form.label :content %><br>
-    <%= form.text_field :content %><br>
-  </div>
-  <%= form.submit class: "btn btn-warning" %>
-  <%= link_to "Back to Home", posts_path, class: "btn btn-info" %>
+  <p><%= form.label :Image %></p>
+  <p class="image_column"><%= form.file_field :image %></p>
+  <p><%= image_tag (@post.image.url) if @post.image && @post.image.url %></p>
+  <p><%= form.hidden_field :image_cache %></p>
+  <p><%= form.label :content %></p>
+  <p><%= form.text_field :content %></p>
+  <p><%= form.submit class: "btn btn-warning" %></p>
+  <p><%= link_to "Back to Home", posts_path, class: "btn btn-info" %></p>
 <% end %>
