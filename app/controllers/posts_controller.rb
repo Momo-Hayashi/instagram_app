@@ -6,11 +6,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
   end
   def new
-    # if params[:back]
-    #   @post = Post.new(post_params)
-    # else
       @post = Post.new
-    # end
   end
   def confirm
     @post = current_user.posts.build(post_params)
