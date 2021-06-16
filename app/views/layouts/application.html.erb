@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>InstaApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <div class="container-fluid">
+    <head>
+      <title>InstaApp</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in?%>
-      <%= link_to 'Home', posts_path %>
-      <%= link_to 'Profile', user_path(current_user.id) %>
-      <%= link_to 'LogOut', session_path(current_user.id), method: :delete %>
-    <% else %>
-    <%= link_to 'Home', posts_path %>
-    <%= link_to 'Sign Up', new_user_path %>
-    <%= link_to 'LogIn', new_session_path %>
-    <% end %>
-    <%= yield %>
-  </body>
+    <body>
+      <header>
+        <ul>
+          <% if logged_in?%>
+            <li><%= link_to 'Home', posts_path %></li>
+            <li><%= link_to 'Profile', user_path(current_user.id) %></li>
+            <li><%= link_to 'LogOut', session_path(current_user.id), method: :delete %></li>
+          <% else %>
+          <li><%= link_to 'Home', posts_path %></li>
+          <li><%= link_to 'Sign Up', new_user_path %></li>
+          <li><%= link_to 'LogIn', new_session_path %></li>
+          <li><% end %>
+        </ul>
+      </header>
+      <% flash.each do |key, value| %>
+        <h3><strong><%= content_tag(:div, value, class: "#{key}") %></strong></h3>
+      <% end %>
+      <%= yield %>
+      <footer>
+        <p>運営会社MOOOOOM株式会社
+        <br>© 2021-2021 MOOOOOM Corp.</p>
+      </footer>
+    </body>
+  </div>
 </html>

@@ -2,6 +2,6 @@
 <p>Name: <%= @user.name %></p>
 <p>email: <%= @user.email %></p>
 <p>Image: <%= image_tag @user.avatar.url if @user.avatar && @user.avatar.url %></p>
-<%= link_to 'Edit your profile', edit_user_path %>
-<%= link_to 'See your favorites', favorites_path %>
+<%= link_to 'Edit your profile', edit_user_path,class: "btn btn-primary" %>
 <%= link_to 'Create New Post', new_post_path, class: "btn btn-warning" %>
+<%= link_to 'See your favorites', favorites_path, class: "btn btn-success" %>
