@@ -12,11 +12,14 @@
 <%= form_with(model: @user, local: true) do |f| %>
   <p><%= f.label :name %></p>
   <p><%= f.text_field :name %></p>
+
   <p><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>
+
   <p><%= f.label :Image %></p>
-  <p id = "image_column" ><%= f.file_field :avater %></p>
-  <p><%= image_tag @user.avatar.url if @user.avatar && @user.avatar.url %></p>
+  <p id = "image_column" ><%= f.file_field :avatar %></p>
+  <p><%= image_tag (@user.avatar.url) if @user.avatar && @user.avatar.url %></p>
   <p><%= f.hidden_field :avatar_cache %></p>
+
   <p><%= f.submit 'Update My Account', class: "btn btn-primary" %></p>
 <% end %>
