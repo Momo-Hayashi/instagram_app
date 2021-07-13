@@ -50,6 +50,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     bcrypt (3.1.16)
+    bcrypt_pbkdf (1.1.0)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
@@ -105,6 +106,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    ed25519 (1.2.4)
     erubi (1.10.0)
     excon (0.84.0)
     execjs (2.8.1)
@@ -142,7 +144,6 @@ GEM
     kgio (2.11.4)
     libv8-node (15.14.0.1-x86_64-darwin-20)
     libv8-node (15.14.0.1-x86_64-linux)
-    libv8-node (15.14.0.1-x86_64-linux-musl)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -274,6 +275,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   byebug
   capistrano (= 3.6.0)
@@ -286,6 +288,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dotenv-rails
+  ed25519
   faker
   fog-aws
   jbuilder (~> 2.5)
